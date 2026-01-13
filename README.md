@@ -32,6 +32,7 @@ A modern web frontend for a workshop/garage management system. It provides dashb
 ## 🗂️ Project Structure
 
 A quick overview of the most important folders and files:
+```text
 
 workshop-management-ui/
 │
@@ -70,7 +71,7 @@ workshop-management-ui/
 ├── lib/ # Helpers & shared utilities
 ├── public/ # Static assets (images/icons)
 └── package.json # Project dependencies & scripts
-
+```
 ---
 
 ## 🚀 Getting Started
