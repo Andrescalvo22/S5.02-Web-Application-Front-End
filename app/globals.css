@@ -1,0 +1,204 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* === DARK MODE HANDLER === */
+@custom-variant dark (&:is(.dark *));
+
+/* =========================================================
+   🎨 ABSOLUT WORKSHOP THEME — BLACK + RED
+   ========================================================= */
+:root {
+  --background: 0 0% 0%;              /* Black */
+  --foreground: 0 0% 100%;            /* White */
+
+  --card: 0 0% 7%;
+  --card-foreground: 0 0% 98%;
+
+  --popover: 0 0% 7%;
+  --popover-foreground: 0 0% 98%;
+
+  --primary: 0 85% 55%;               /* Red */
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 0 0% 20%;
+  --secondary-foreground: 0 0% 95%;
+
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 70%;
+
+  --accent: 0 0% 20%;
+  --accent-foreground: 0 0% 95%;
+
+  --destructive: 0 80% 50%;
+  --destructive-foreground: 0 0% 100%;
+
+  --border: 0 0% 25%;
+  --input: 0 0% 20%;
+  --ring: 0 85% 55%;
+
+  --radius: 0.5rem;
+
+  /* Sidebar */
+  --sidebar: 0 0% 7%;
+  --sidebar-foreground: 0 0% 100%;
+  --sidebar-primary: 0 85% 55%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 0 0% 20%;
+  --sidebar-accent-foreground: 0 0% 100%;
+  --sidebar-border: 0 0% 25%;
+  --sidebar-ring: 0 85% 55%;
+}
+
+/* =========================================================
+   🌑 DARK MODE VALUES (same design for consistency)
+   ========================================================= */
+.dark {
+  --background: 0 0% 0%;
+  --foreground: 0 0% 100%;
+
+  --card: 0 0% 10%;
+  --card-foreground: 0 0% 98%;
+
+  --popover: 0 0% 10%;
+  --popover-foreground: 0 0% 98%;
+
+  --primary: 0 85% 55%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 0 0% 20%;
+  --secondary-foreground: 0 0% 98%;
+
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 70%;
+
+  --accent: 0 0% 20%;
+  --accent-foreground: 0 0% 98%;
+
+  --destructive: 0 80% 50%;
+  --destructive-foreground: 0 0% 100%;
+
+  --border: 0 0% 25%;
+  --input: 0 0% 20%;
+  --ring: 0 85% 55%;
+
+  --sidebar: 0 0% 10%;
+  --sidebar-foreground: 0 0% 100%;
+  --sidebar-primary: 0 85% 55%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 0 0% 25%;
+  --sidebar-accent-foreground: 0 0% 100%;
+  --sidebar-border: 0 0% 35%;
+  --sidebar-ring: 0 85% 55%;
+}
+
+/* =========================================================
+   🌐 TAILWIND THEME BINDINGS
+   ========================================================= */
+@theme inline {
+  --font-sans: "Geist", "Geist Fallback";
+  --font-mono: "Geist Mono", "Geist Mono Fallback";
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* SIDEBAR */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* =========================================================
+   🧩 BASE STYLES
+   ========================================================= */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html, body {
+    height: 100%;
+  }
+
+  body {
+    @apply text-foreground;
+    background: transparent !important;
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 1.2s ease forwards;
+}
+.logo-big {
+  max-width: 1000px;
+  width: 100%;
+}
+
+@keyframes logo-enter-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-140px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px) scale(1);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 45px rgba(239, 68, 68, 0.55));
+  }
+  50% {
+    filter: drop-shadow(0 0 65px rgba(239, 68, 68, 0.85));
+  }
+}
+
+.animate-logo-enter {
+  animation: logo-enter-left 1.05s ease-out forwards;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2.8s ease-in-out infinite;
+}
+
+

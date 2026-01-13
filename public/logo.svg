@@ -1,0 +1,69 @@
+<svg width="100%" height="100%" viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- TITLE -->
+  <text x="400" y="70"
+        fill="#EF4444"
+        font-size="54px"
+        font-weight="800"
+        font-family="Segoe UI, sans-serif"
+        text-anchor="middle">
+      Absolut Workshop
+  </text>
+
+  <!-- SUBTITLE -->
+  <text x="400" y="115"
+        fill="white"
+        font-size="30px"
+        font-weight="600"
+        font-family="Segoe UI, sans-serif"
+        text-anchor="middle">
+      Barcelona
+  </text>
+
+  <!-- CAR -->
+  <path d="M120 220 
+           C180 150, 330 125, 460 135 
+           C570 145, 640 170, 690 200 
+           L740 200 
+           C760 200, 775 215, 780 235 
+           L780 260 
+           L720 260 
+           C715 280, 690 300, 645 300
+           C600 300, 575 280, 570 260
+           L310 260
+           C305 280, 280 300, 230 300
+           C180 300, 155 280, 150 260
+           L120 260 
+           Z"
+        fill="#111"
+        stroke="#EF4444"
+        stroke-width="6"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+
+  <!-- Wheels -->
+  <circle cx="230" cy="260" r="35" stroke="#EF4444" stroke-width="8" fill="black"/>
+  <circle cx="645" cy="260" r="35" stroke="#EF4444" stroke-width="8" fill="black"/>
+
+  <!-- Rims -->
+  <circle cx="230" cy="260" r="15" fill="#EF4444"/>
+  <circle cx="645" cy="260" r="15" fill="#EF4444"/>
+
+  <!-- GLOW ANIMATION -->
+  <style>
+    svg {
+      filter: drop-shadow(0 0 20px #ef4444cc);
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+      from { filter: drop-shadow(0 0 10px #ef444477); }
+      to   { filter: drop-shadow(0 0 35px #ef4444ff); }
+    }
+  </style>
+
+</svg>
+
+
+
+
+
