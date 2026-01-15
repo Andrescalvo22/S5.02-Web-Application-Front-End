@@ -3,9 +3,16 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { ArrowLeft, Wrench, Car, Calendar, BadgeCheck, DollarSign } from "lucide-react";
+import {
+  ArrowLeft,
+  Wrench,
+  Car,
+  Calendar,
+  BadgeCheck,
+  DollarSign,
+} from "lucide-react";
 
-import { getOrderById } from "@/api/repairs"; 
+import { getOrderById } from "@/api/repairs";
 
 const statusColors: Record<string, string> = {
   PENDING: "bg-yellow-600 text-black",
@@ -49,7 +56,14 @@ export default function RepairStatusPage() {
     if (!d) return "-";
     const date = new Date(d);
     if (isNaN(date.getTime())) return "-";
-    return date.toLocaleDateString("es-ES");
+
+    return date.toLocaleString("es-ES", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
   };
 
   const currentStepIndex = useMemo(() => {
@@ -84,9 +98,7 @@ export default function RepairStatusPage() {
           <header className="flex items-center justify-between mb-12 border-b border-red-700 pb-8">
             <div className="flex items-center gap-5">
               <Wrench className="w-12 h-12 text-red-500" />
-              <h1 className="text-5xl font-bold text-red-500">
-                Repair Status
-              </h1>
+              <h1 className="text-5xl font-bold text-red-500">Repair Status</h1>
             </div>
 
             {repair?.status && (
@@ -170,16 +182,36 @@ export default function RepairStatusPage() {
                   </div>
                 </section>
 
-                {/* NOTES */}
                 <section className="bg-red-600 border border-red-400 rounded-3xl shadow-2xl p-10">
                   <h2 className="text-4xl font-extrabold mb-6">
                     Mechanic Notes
                   </h2>
 
-                  <div className="bg-black/25 rounded-2xl border border-white/30 p-8">
-                    <p className="text-2xl opacity-95">
-                      No mechanic notes available yet.
-                    </p>
+                  <div className="bg-black/25 rounded-2xl border border-white/30 p-8 space-y-6">
+                    {repair.notes && repair.notes.length > 0 ? (
+                      repair.notes.map((note: any) => (
+                        <div
+                          key={note.id}
+                          className="border-b border-white/20 pb-5 last:border-b-0 last:pb-0"
+                        >
+                          <p className="text-2xl font-semibold text-white">
+                            {note.author ?? "Mechanic"}
+                          </p>
+
+                          <p className="text-xl opacity-80">
+                            {formattedDate(note.createdAt)}
+                          </p>
+
+                          <p className="text-2xl mt-3 opacity-95">
+                            {note.text ?? "-"}
+                          </p>
+                        </div>
+                      ))
+                    ) : (
+                      <p className="text-2xl opacity-95">
+                        No mechanic notes available yet.
+                      </p>
+                    )}
                   </div>
                 </section>
               </div>
